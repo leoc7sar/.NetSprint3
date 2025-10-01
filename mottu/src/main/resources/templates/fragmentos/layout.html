@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${titulo} ?: 'mottu'"></title>
+  <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<header th:fragment="cabecalho">
+  <nav>
+    <a th:href="@{/}">Início</a>
+    <a th:href="@{/locacoes}">Locações</a>
+    <a th:href="@{/pagamentos}">Pagamentos</a>
+    <a th:href="@{/admin/entregadores}">Entregadores</a>
+    <a th:href="@{/admin/motos}">Motos</a>
+    <a th:href="@{/logout}">Sair</a>
+  </nav>
+</header>
+<main th:fragment="conteudo">
+  <div th:insert="~{::body}"></div>
+</main>
+<footer th:fragment="rodape">
+  <p>© mottu</p>
+</footer>
+</body>
+</html>

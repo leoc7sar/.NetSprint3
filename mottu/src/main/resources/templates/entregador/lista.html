@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout :: conteudo">
+<body>
+<h2>Entregadores</h2>
+<a th:href="@{/admin/entregadores/novo}">Novo</a>
+<table>
+  <tr><th>ID</th><th>Nome</th><th>CNH</th><th>Telefone</th><th>Ativo</th><th>Ações</th></tr>
+  <tr th:each="e : ${itens}">
+    <td th:text="${e.id}"></td>
+    <td th:text="${e.nome}"></td>
+    <td th:text="${e.cnh}"></td>
+    <td th:text="${e.telefone}"></td>
+    <td th:text="${e.ativo}"></td>
+    <td>
+      <a th:href="@{'/admin/entregadores/' + ${e.id} + '/editar'}">Editar</a>
+      <form th:action="@{'/admin/entregadores/' + ${e.id} + '/excluir'}" method="post" style="display:inline">
+        <button type="submit">Excluir</button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

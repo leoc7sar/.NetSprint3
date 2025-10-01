@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout :: conteudo">
+<body>
+<h2>Locações</h2>
+<a th:href="@{/locacoes/abrir}">Abrir locação</a>
+<table>
+  <tr><th>ID</th><th>Entregador</th><th>Moto</th><th>Início</th><th>Fim</th><th>Status</th><th>Total</th><th>Ações</th></tr>
+  <tr th:each="l : ${itens}">
+    <td th:text="${l.id}"></td>
+    <td th:text="${l.entregador.nome}"></td>
+    <td th:text="${l.moto.placa}"></td>
+    <td th:text="${l.dataInicio}"></td>
+    <td th:text="${l.dataFim}"></td>
+    <td th:text="${l.status}"></td>
+    <td th:text="${l.total}"></td>
+    <td>
+      <a th:if="${l.status.name() == 'ABERTA'}" th:href="@{'/locacoes/' + ${l.id} + '/fechar'}">Fechar & Pagar</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

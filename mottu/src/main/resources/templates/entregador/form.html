@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout :: conteudo">
+<body>
+<h2 th:text="${entregador.id} != null ? 'Editar Entregador' : 'Novo Entregador'"></h2>
+<form th:action="${entregador.id} != null ? @{'/admin/entregadores/' + ${entregador.id}} : @{/admin/entregadores}" method="post" th:object="${entregador}">
+  <label>Nome <input th:field="*{nome}"><span th:errors="*{nome}"></span></label>
+  <label>CNH <input th:field="*{cnh}"><span th:errors="*{cnh}"></span></label>
+  <label>Telefone <input th:field="*{telefone}"><span th:errors="*{telefone}"></span></label>
+  <label>Ativo <input type="checkbox" th:field="*{ativo}"></label>
+  <button type="submit">Salvar</button>
+</form>
+</body>
+</html>

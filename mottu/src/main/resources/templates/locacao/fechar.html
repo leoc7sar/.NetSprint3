@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout :: conteudo">
+<body>
+<h2>Fechar locação</h2>
+<form th:action="@{'/locacoes/' + ${locacao.id} + '/fechar'}" method="post">
+  <p>Locação #<span th:text="${locacao.id}"></span> — <b th:text="${locacao.entregador.nome}"></b> / <b th:text="${locacao.moto.placa}"></b></p>
+  <label>Data fim <input type="date" name="dataFim" required></label>
+  <label>Método de pagamento
+    <select name="metodo">
+      <option>PIX</option>
+      <option>CARTAO</option>
+      <option>BOLETO</option>
+    </select>
+  </label>
+  <button type="submit">Fechar & Pagar</button>
+</form>
+</body>
+</html>
